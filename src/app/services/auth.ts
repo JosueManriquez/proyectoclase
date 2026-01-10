@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Usuario } from '../services/usuario';
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  constructor(private afAuth: AngularFireAuth, private userService: Usuario) { }
+
+  async registrar(email: string, password: string) {
+    const cred = await this.afAuth.createUserWithEmailAndPassword(email, password);
+    const uid = cred.user?.uid || '';
+
+    await this.userService.crearUsuario(uid, email)
+    return cred;
+  }
+  login(email: string, password: string) {
+    return this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+  logout() {
+    return this.afAuth.signOut();
+  }
+}

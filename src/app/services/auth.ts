@@ -20,4 +20,10 @@ export class AuthService {
   logout() {
     return this.afAuth.signOut();
   }
+
+  ObtenerUsuario(uid:string){
+    return this.userService.obtenerUsuario(uid);
+  };
+
 }
+

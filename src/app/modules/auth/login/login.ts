@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth';
 import { Router } from '@angular/router';
+import { Usuario } from '../../../services/usuario';
 
 @Component({
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.html',
-  styleUrls: ['./login.css'], // también corregí styleUrl -> styleUrls
+  styleUrls: ['./login.css'],
 })
 export class Login {
   email: string = '';
@@ -17,9 +18,20 @@ export class Login {
   login() {
     this.authService
       .login(this.email, this.password)
-      .then(() => {
-        console.log('login exitoso');
-        this.router.navigate(['/admin']);
+      .then((cred) => {
+        const uid = cred.user?.uid || '';
+        this.authService.ObtenerUsuario(uid).subscribe((usuario:any)=> {
+       console.log('Usuario": ' ,usuario);
+
+          if (usuario.rol === 'admin'){
+            this.router.navigate(['/admin']);
+          }
+          else{
+            this.router.navigate(['/usuario']);
+            console.error('Usuario no activo')
+          }
+        })
+
       })
       .catch((error) => {
         console.error('error de login', error);
@@ -28,6 +40,6 @@ export class Login {
   nuevoRegistro() {
     this.router.navigate(['/registrar']);
   }
-  
+
 }
 

@@ -20,6 +20,7 @@ export class Login {
       .login(this.email, this.password)
       .then((cred) => {
         const uid = cred.user?.uid || '';
+        debugger;
         this.authService.ObtenerUsuario(uid).subscribe((usuario:any)=> {
        console.log('Usuario": ' ,usuario);
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../services/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenida-admin',
@@ -8,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class BienvenidaAdmin {
 
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  cerrarSesion() {
+    this.authService.logout().then(() => {
+      this.router.navigate(['/login']);
+    });
+  }
 }

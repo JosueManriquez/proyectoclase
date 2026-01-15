@@ -66,7 +66,7 @@ export class UsuarioService {
       return this.firestore
         .collection('usuarios')
         .doc(uid)
-        .update({ activo });
+        .update({ activo }); //inge lo tiene en estado  
     });
   }
 

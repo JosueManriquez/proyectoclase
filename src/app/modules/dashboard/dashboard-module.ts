@@ -5,7 +5,7 @@ import { BienvenidaUsuario } from './bienvenida-usuario/bienvenida-usuario';
 import { CambiarRol } from './bienvenida-admin/cambiar-rol/cambiar-rol';
 import { DesactivarUsuario } from './bienvenida-admin/desactivar-usuario/desactivar-usuario';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +18,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
+
   ]
 })
 export class DashboardModule { }

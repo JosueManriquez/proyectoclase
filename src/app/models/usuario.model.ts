@@ -1,4 +1,4 @@
-export interface Usuario{
+export interface UsuarioModelo{
     uid: string;
     email: string;
     rol: 'admin' | 'usuario' | 'cliente';

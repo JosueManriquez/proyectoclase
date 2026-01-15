@@ -1,11 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../../../services/usuario';
+import { UsuarioModelo } from '../../../../models/usuario.model';
 
 @Component({
   selector: 'app-cambiar-rol',
-  standalone: false,
   templateUrl: './cambiar-rol.html',
   styleUrl: './cambiar-rol.css',
+  standalone: false,
 })
-export class CambiarRol {
+export class CambiarRol implements OnInit {
 
+  usuarios: UsuarioModelo[] = [];
+  rolSeleccionado: { [uid: string]: string } = {};
+
+  constructor(private usuarioService: UsuarioService) { }
+
+  ngOnInit(): void {
+    this.usuarioService.obtenerUsuarios().subscribe({
+      next: (usuarios) => {
+        console.log('Usuarios recibidos:', usuarios);
+        this.usuarios = usuarios;
+
+        usuarios.forEach(usuario => {
+          if (usuario.uid) {
+            this.rolSeleccionado[usuario.uid] = usuario.rol;
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error Firestore:', err);
+      }
+    });
+  }
+
+
+  cambiarRol(uid: string): void {
+    const rolNuevo = this.rolSeleccionado[uid];
+    this.usuarioService.cambiarRol(uid, rolNuevo);
+  }
 }

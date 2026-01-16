@@ -6,6 +6,7 @@ import { CambiarRol } from './bienvenida-admin/cambiar-rol/cambiar-rol';
 import { DesactivarUsuario } from './bienvenida-admin/desactivar-usuario/desactivar-usuario';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { GestionarCategoria } from './gestionar-categoria/gestionar-categoria';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     BienvenidaUsuario,
     CambiarRol,
     DesactivarUsuario,
+    GestionarCategoria,
 
   ],
   imports: [

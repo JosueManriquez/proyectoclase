@@ -73,6 +73,21 @@
   color: #777;
 }
 
+/* ESTADO */
+.estado {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.estado.activo {
+  color: #28a745; /* verde */
+}
+
+.estado.inactivo {
+  color: #dc3545; /* rojo */
+}
+
 /* Edición */
 .edicion input {
   padding: 6px 8px;

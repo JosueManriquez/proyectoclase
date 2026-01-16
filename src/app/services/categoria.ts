@@ -34,5 +34,32 @@ export class CategoriaService {
 
     })
   }
+  eliminarCategoria(id: string) {
+    return runInInjectionContext(this.Injector, () => {
+      return this.firestore.collection('categorias').doc(id).delete();
+    })
+
+  }
+  
+  actualizarCategoria(id:string, categoria:CategoriaModelo){
+    return runInInjectionContext(this.Injector, () => {
+      return this.firestore
+      .collection('categorias')
+      .doc(id)
+      .update(categoria)
+    })
+  }
+
+
+
+
+  desactivarCategoria(uid: string, activo: boolean) {
+    return runInInjectionContext(this.Injector, () => {
+      return this.firestore
+        .collection('categorias')
+        .doc(uid)
+        .update({ activo }); //inge lo tiene en estado  
+    });
+  }
 
 }

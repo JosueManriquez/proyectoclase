@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { UsuarioService } from '../../../../services/usuario';
 import { UsuarioModelo } from '../../../../models/usuario.model';
 
@@ -13,13 +13,14 @@ export class CambiarRol implements OnInit {
   usuarios: UsuarioModelo[] = [];
   rolSeleccionado: { [uid: string]: string } = {};
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private cdr:ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.usuarioService.obtenerUsuarios().subscribe({
       next: (usuarios) => {
         console.log('Usuarios recibidos:', usuarios);
         this.usuarios = usuarios;
+        this.cdr.detectChanges();
 
         usuarios.forEach(usuario => {
           if (usuario.uid) {

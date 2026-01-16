@@ -7,6 +7,7 @@ import { DesactivarUsuario } from './bienvenida-admin/desactivar-usuario/desacti
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { GestionarCategoria } from './gestionar-categoria/gestionar-categoria';
+import { AgregarProducto } from './agregar-producto/agregar-producto';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { GestionarCategoria } from './gestionar-categoria/gestionar-categoria';
     CambiarRol,
     DesactivarUsuario,
     GestionarCategoria,
+    AgregarProducto,
 
   ],
   imports: [

@@ -26,5 +26,25 @@ export class ProductoService {
         });
     });
   }
+   obtenerProductos() {
+    return runInInjectionContext(this.injector, () => {
+      return this.firestore
+        .collection<ProductoModelo>('productos', ref => ref.orderBy('creadoEn', 'desc'))
+        .valueChanges({ idField: 'id' });
+    });
+  }
+
+  eliminarProducto(id: string) {
+    return runInInjectionContext(this.injector, () => {
+      return this.firestore.collection('productos').doc(id).delete();
+    });
+  }
+
+  actualizarProducto(id: string, producto: Partial<ProductoModelo>) {
+    return runInInjectionContext(this.injector, () => {
+      return this.firestore.collection('productos').doc(id).update(producto);
+    });
+  }
 }
+
 

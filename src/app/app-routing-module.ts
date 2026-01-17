@@ -8,6 +8,7 @@ import { CambiarRol } from './modules/dashboard/bienvenida-admin/cambiar-rol/cam
 import { DesactivarUsuario } from './modules/dashboard/bienvenida-admin/desactivar-usuario/desactivar-usuario';
 import { GestionarCategoria } from './modules/dashboard/gestionar-categoria/gestionar-categoria';
 import { AgregarProducto } from './modules/dashboard/agregar-producto/agregar-producto';
+import { GestionarProducto } from './modules/dashboard/gestionar-producto/gestionar-producto';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'registrar', component: Registrar },
@@ -27,6 +28,10 @@ const routes: Routes = [
     {
       path: 'agregar-producto',
       component: AgregarProducto
+    },
+    {
+      path: 'gestionar-producto',
+      component: GestionarProducto
     }
 
     ]

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { GestionarCategoria } from './gestionar-categoria/gestionar-categoria';
 import { AgregarProducto } from './agregar-producto/agregar-producto';
+import { GestionarProducto } from './gestionar-producto/gestionar-producto';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AgregarProducto } from './agregar-producto/agregar-producto';
     DesactivarUsuario,
     GestionarCategoria,
     AgregarProducto,
+    GestionarProducto,
 
   ],
   imports: [

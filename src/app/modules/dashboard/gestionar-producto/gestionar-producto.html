@@ -7,12 +7,12 @@
       <div *ngIf="productoEditando !== p.id" class="info">
         <strong>{{ p.nombre }}</strong>
         <small>{{ p.descripcion }}</small>
-        <small>Precio: ${{ p.precio }} | Cantidad: {{ p.cantidad }}</small>
+        <small>Precio: Bs{{ p.precio }} | Cantidad: {{ p.cantidad }}</small>
         <small>Categoría: {{ obtenerNombreCategoria(p.categoriaId) }}</small>
       </div>
 
-      <!-- MODO EDICIÓN -->
-      <div *ngIf="productoEditando === p.id" class="edicion">
+      <!-- MODO EDICIÓN ldmwñldcambioprueba-->
+      <div *ngIf="productoEditando === p.id" class="edicion">   
         <input [(ngModel)]="nombreEditado" placeholder="Nombre" />
         <input [(ngModel)]="descripcionEditado" placeholder="Descripción" />
         <input type="number" [(ngModel)]="precioEditado" placeholder="Precio" />

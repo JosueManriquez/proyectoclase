@@ -38,6 +38,7 @@ export class AgregarProducto implements OnInit {
   }
 
   guardarProducto() {
+    debugger
     if (!this.producto.categoriaId) {
       alert('Selecciona una categoría');
       return;

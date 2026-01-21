@@ -29,22 +29,17 @@ export class GestionarProducto implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtener productos
     this.productoService.obtenerProductos().subscribe((data) => {
-      
       this.productos = data;
       this.cdr.detectChanges();
-      
     });
-
-    // Obtener categorías para mostrar nombre
     this.categoriaService.ObtenerCategorias().subscribe((data) => {
       this.categorias = data;
       this.cdr.detectChanges();
     });
   }
 
-  // EDITAR
+
   editarProducto(producto: ProductoModelo) {
     this.productoEditando = producto.id!;
     this.nombreEditado = producto.nombre;
@@ -76,7 +71,6 @@ export class GestionarProducto implements OnInit {
     this.productoEditando = null;
   }
 
-  // ELIMINAR
   eliminarProducto(id: string) {
     if (confirm('eliminar este producto?')) {
       this.productoService.eliminarProducto(id).then(() => {

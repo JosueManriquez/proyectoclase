@@ -14,6 +14,7 @@ export class Registrar {
   constructor(private authService: AuthService, private router: Router) { }
 
   registrar() {
+    debugger
     this.authService
       .registrar(this.email, this.password)
       .then((user) => {

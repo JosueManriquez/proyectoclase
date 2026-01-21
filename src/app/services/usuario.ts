@@ -15,15 +15,13 @@ export class UsuarioService {
   ) { }
 
   crearUsuario(uid: string, email: string) {
+    // Restauramos el contexto de inyección manualmente
     return runInInjectionContext(this.injector, () => {
-      return this.firestore
-        .collection('usuarios')
-        .doc(uid)
-        .set({
-          email,
-          rol: 'usuario',
-          fecha_registro: new Date(),
-        });
+      return this.firestore.collection('usuarios').doc(uid).set({
+        email,
+        rol: 'usuario',
+        fechaCreado: new Date(),
+      });
     });
   }
 

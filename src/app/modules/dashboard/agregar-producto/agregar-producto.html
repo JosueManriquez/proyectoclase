@@ -1,55 +1,27 @@
-<div class="producto-container">
-  <h2>Agregar Producto</h2>
+<div class="form-producto">
+  <input placeholder="Nombre" [(ngModel)]="producto.nombre" />
 
-  <!-- Nombre -->
-  <label class="label">Nombre del producto</label>
-  <input
-    placeholder="Escriba el nombre"
-    [(ngModel)]="producto.nombre"
-  />
-
-  <!-- Descripción -->
-  <label class="label">Descripción</label>
-  <input
-    placeholder="Descripción breve del producto"
+  <textarea
+    placeholder="Descripción"
     [(ngModel)]="producto.descripcion"
-  />
+  ></textarea>
 
-  <!-- Precio y Cantidad -->
-  <div class="fila">
-    <div class="campo">
-      <label class="label">Precio</label>
-      <input
-        type="number"
-        placeholder="0.00"
-        [(ngModel)]="producto.precio"
-      />
-    </div>
+  <input type="number" placeholder="Precio" [(ngModel)]="producto.precio" />
 
-    <div class="campo">
-      <label class="label">Cantidad</label>
-      <input
-        type="number"
-        placeholder="0"
-        [(ngModel)]="producto.cantidad"
-      />
-    </div>
-  </div>
+  <input type="number" placeholder="Stock" [(ngModel)]="producto.cantidad" />
 
-  <!-- Categoría -->
-  <label class="label">Categoría</label>
+  <!-- SELECT DE CATEGORÍA -->
   <select [(ngModel)]="producto.categoriaId">
-    <option value="" disabled selected>
-      Selecciona una categoría
-    </option>
-
+    <option value="">Seleccione categoría</option>
     <option *ngFor="let c of categorias" [value]="c.id">
       {{ c.nombre }}
     </option>
   </select>
+  <!-- IMAGEN -->
+  <input type="file" accept="image/*" (change)="archivoSelecionado($event)" />
 
-  <!-- Botón -->
-  <button class="btn-guardar" (click)="guardarProducto()">
-    Guardar Producto
-  </button>
+  <!-- PREVIEW -->
+  <img *ngIf="imagenPreview" [src]="imagenPreview" class="preview" />
+
+  <button (click)="guardarProducto()">Guardar Producto</button>
 </div>

@@ -7,4 +7,5 @@ export interface ProductoModelo {
   categoriaId: string;
   activo: boolean;
   creadoEn: Date;
+  imagenUrl: string;
 }

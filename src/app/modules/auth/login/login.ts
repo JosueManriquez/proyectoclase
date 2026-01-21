@@ -29,7 +29,7 @@ export class Login {
           }
           else{
             this.router.navigate(['/usuario']);
-            console.error('Usuario no activo')
+      /*       console.log('Usuario no activo') */
           }
         })
 
